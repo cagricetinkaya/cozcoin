@@ -77,7 +77,24 @@ public class CouchController  {
     @RequestMapping("/getData")
     public void getData(HttpServletRequest request, HttpServletResponse response) throws IOException {
         JSONObject obj =new JSONObject();
-        String strResult = "{\"date\":{\"offset\":{\"totalSeconds\":0,\"id\":\"Z\",\"rules\":{\"fixedOffset\":true,\"transitionRules\":[],\"transitions\":[]}},\"zone\":{\"totalSeconds\":0,\"id\":\"Z\",\"rules\":{\"fixedOffset\":true,\"transitionRules\":[],\"transitions\":[]}},\"dayOfMonth\":26,\"dayOfWeek\":\"MONDAY\",\"dayOfYear\":57,\"month\":\"FEBRUARY\",\"year\":2018,\"hour\":0,\"minute\":0,\"nano\":0,\"second\":0,\"monthValue\":2,\"chronology\":{\"id\":\"ISO\",\"calendarType\":\"iso8601\"}},\"high\":10350.11042487,\"low\":9358.52927553,\"open\":9560.19775733,\"close\":10309.58721908,\"volume\":25747541.564163,\"quoteVolume\":2614.61774974,\"weightedAverage\":9847.53567389}";
+        //String strResult = "{\"date\":{\"offset\":{\"totalSeconds\":0,\"id\":\"Z\",\"rules\":{\"fixedOffset\":true,\"transitionRules\":[],\"transitions\":[]}},\"zone\":{\"totalSeconds\":0,\"id\":\"Z\",\"rules\":{\"fixedOffset\":true,\"transitionRules\":[],\"transitions\":[]}},\"dayOfMonth\":26,\"dayOfWeek\":\"MONDAY\",\"dayOfYear\":57,\"month\":\"FEBRUARY\",\"year\":2018,\"hour\":0,\"minute\":0,\"nano\":0,\"second\":0,\"monthValue\":2,\"chronology\":{\"id\":\"ISO\",\"calendarType\":\"iso8601\"}},\"high\":10350.11042487,\"low\":9358.52927553,\"open\":9560.19775733,\"close\":10309.58721908,\"volume\":25747541.564163,\"quoteVolume\":2614.61774974,\"weightedAverage\":9847.53567389}";
+        String strResult = "{" +
+                "\"_id\":\"448eb14a89ed2aad56627df30b00e3c4\"," +
+                "\"_rev\":\"3-0dbd37b1089f25f38fa04075bb113fa9\"," +
+                "\"Coin_Name\":\"Etherium\"," +
+                "\"Coin_Code\":\"ETH\"," +
+                "\"Type\":\"Coins\"," +
+                "\"_attachments\":{" +
+                "\"eth (1).png\":{" +
+                "\"content_type\":\"image/png\"," +
+                "\"revpos\":2," +
+                "\"digest\":\"md5-4e9JyrAqGvTDOdAuY+MAkw==\"," +
+                "\"length\":493," +
+                "\"stub\":true}}" +
+                "}";
+
+        JSONObject obb=new JSONObject();
+
         obj.put("data",strResult);
         obj.put("success",true);
         response.getWriter().write(obj.toString());
