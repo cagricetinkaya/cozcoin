@@ -5,6 +5,7 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.converter.StringHttpMessageConverter;
+import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.client.RestTemplate;
 
@@ -13,6 +14,7 @@ import java.nio.charset.Charset;
 @SpringBootApplication
 @Controller
 @EnableAutoConfiguration
+@EnableScheduling
 public class CoinApplication {
 
 	@Bean
