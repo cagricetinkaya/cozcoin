@@ -1,10 +1,7 @@
 package com.coz.coin.rest;
 
 import com.coz.coin.client.poloniex.PoloniexExchangeService;
-import com.coz.coin.client.poloniex.PoloniexPublicAPIClient;
-import com.coz.coin.data.model.poloniex.PoloniexChartData;
 import com.coz.coin.data.model.poloniex.PoloniexTicker;
-import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,25 +9,16 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.scheduling.annotation.EnableScheduling;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
-import java.time.ZoneOffset;
-import java.time.ZonedDateTime;
-import java.util.Arrays;
-import java.util.Date;
-import java.util.List;
 import java.util.Map;
 
 import com.coz.coin.VTUtil;
 import com.coz.coin.Constants;
-
 
 
 @RestController
@@ -52,6 +40,7 @@ public class CouchController  {
         return  result.toString();
     }
 
+    @RequestMapping("/saveDataJson")
     public String saveDataJson(JSONObject data){
         JSONObject result = null;
         HttpHeaders headers = new HttpHeaders();
@@ -169,34 +158,6 @@ public class CouchController  {
 
         ResponseEntity<String> responseEntity = restTemplate.getForEntity(url, String.class);
         return responseEntity.getBody();
-    }
-
-
-    @Scheduled(fixedRate = 60000)
-    public void saveUsdBtcPricePoloniex()  {
-
-        String exchangeParams = "key:BTC_USD";
-
-        String exchange = getDataByParamAndViewName(exchangeParams,"findExchangeByName");
-
-        String exchangeId = VTUtil.getValueString("id",exchange);
-
-        String stockParams = "key:Poloniex";
-
-        String stock = getDataByParamAndViewName(stockParams,"findStockByName");
-
-        String stockId = VTUtil.getValueString("id",stock);
-
-        PoloniexExchangeService service = new PoloniexExchangeService(Constants.poloniexApiKey, Constants.poloniexAPISecret);
-
-        PoloniexTicker ticker = service.returnTicker(PoloniexExchangeService.USDT_BTC_CURRENCY_PAIR);
-        ticker.exchangeId = exchangeId;
-        ticker.stockId = stockId;
-        ticker.Type = "Prices";
-        ticker.date = VTUtil.currentDate();
-
-        saveDataJson(JSONObject.fromObject(ticker.toString()));
-
     }
 
 

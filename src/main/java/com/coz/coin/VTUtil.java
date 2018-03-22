@@ -1,9 +1,9 @@
 package com.coz.coin;
-
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class VTUtil {
+
 
 
     public static String reqgetString(String reqStr,String defaultVal) {
@@ -35,4 +35,8 @@ public class VTUtil {
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
         return sdf.format(new Date()).toString();
     }
+
+
+
+
 }

@@ -1,28 +1,31 @@
-package com.coz.coin.data.model.poloniex;
+package com.coz.coin.data.model.binance;
 
 import com.google.gson.Gson;
 
 import java.math.BigDecimal;
-import java.util.Date;
 
 /**
  *
  * @author David
  */
-public class PoloniexTicker
+public class BinanceTicker
 {
-    public final BigDecimal last;
-    public final BigDecimal lowestAsk;
-    public final BigDecimal highestBid;
+    public  BigDecimal last;
+    public  BigDecimal lowestAsk;
+    public  BigDecimal highestBid;
     public  BigDecimal percentChange;
-    public final BigDecimal baseVolume;
+    public  BigDecimal baseVolume;
     public  String exchangeId;
     public String stockId;
     public String Type;
     public String date;
     public String exchangeCode;
 
-    public PoloniexTicker(BigDecimal last, BigDecimal lowestAsk, BigDecimal highestBid, BigDecimal percentChange, BigDecimal baseVolume, String exchangeId, String stockId, String Type, String date, String exchangeCode)
+    public BinanceTicker(){
+
+    }
+
+    public BinanceTicker(BigDecimal last, BigDecimal lowestAsk, BigDecimal highestBid, BigDecimal percentChange, BigDecimal baseVolume , String exchangeId, String stockId, String Type, String date, String exchangeCode)
     {
         this.last = last;
         this.lowestAsk = lowestAsk;
